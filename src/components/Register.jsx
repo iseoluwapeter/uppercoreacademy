@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo.png";
 import { createClient } from "@supabase/supabase-js";
+import { use } from "react";
 
 const supabaseUrl = "https://byvkzzfgdnrlrvkmnfxf.supabase.co";
 const supabaseAnonKey =
@@ -21,6 +22,7 @@ const Register = () => {
     success: false,
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,6 +30,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     const { data, error } = await supabase.from("webinar_registration").insert([
       {
@@ -60,6 +64,7 @@ const Register = () => {
         status: "",
         techInterest: "",
       });
+      setIsLoading(false);
     }
   };
 
@@ -169,8 +174,10 @@ const Register = () => {
               <option value="">Select</option>
               <option value="Frontend">Frontend</option>
               <option value="Frontend">Backend</option>
-              <option value="Design">Design</option>
-              <option value="Data">Data</option>
+              <option value="Industrial Design">Industrial Design</option>
+              <option value="Data Analytics/ Science">
+                Data Analytics/ Science
+              </option>
               <option value="Unsure">Unsure</option>
             </select>
           </div>
@@ -178,9 +185,10 @@ const Register = () => {
           {/* Submit */}
           <button
             type="submit"
+            disabled={isLoading}
             className="w-full bg-green-600 text-white font-medium py-2 rounded hover:bg-green-700 transition"
           >
-            Register Now
+            {isLoading ? "Registering... Please wait!" : "Register"}
           </button>
         </form>
       </div>
