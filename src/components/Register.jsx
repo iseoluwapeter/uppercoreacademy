@@ -571,7 +571,7 @@ function Hero({ registerHref }) {
             variants={item}
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
-            <Button href={registerHref} variant="dark">
+            <Button to={registerHref} variant="dark">
               Join the Second Cohort
             </Button>
             <Button href="#explore" variant="ghost">

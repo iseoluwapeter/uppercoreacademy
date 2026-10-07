@@ -71,35 +71,37 @@ export function Button({
 
 export default function Logo({ light = false }) {
   return (
-    <a
-      href="#top"
-      className="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0E7A4E]"
-      aria-label="Uppercore Kids UK home"
-    >
-      {/* <span
+    <Link to="/">
+      <a
+        href="#top"
+        className="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0E7A4E]"
+        aria-label="Uppercore Kids UK home"
+      >
+        {/* <span
         className="grid h-9 w-9 place-items-center rounded-xl bg-[#C8F13C] text-lg font-extrabold leading-none text-[#0A3B2C]"
         style={display}
       >
         U
       </span> */}
-      <span className="leading-none">
-        <span
-          className={`block text-lg font-extrabold tracking-tight ${
-            light ? "text-white" : "text-[#0A3B2C]"
-          }`}
-          style={display}
-        >
-          Uppercore
+        <span className="leading-none">
+          <span
+            className={`block text-lg font-extrabold tracking-tight ${
+              light ? "text-white" : "text-[#0A3B2C]"
+            }`}
+            style={display}
+          >
+            Uppercore
+          </span>
+          <span
+            className={`mt-0.5 block text-[11px] font-semibold ${
+              light ? "text-[#C8F13C]" : "text-[#0E7A4E]"
+            }`}
+          >
+            Kids
+          </span>
         </span>
-        <span
-          className={`mt-0.5 block text-[11px] font-semibold ${
-            light ? "text-[#C8F13C]" : "text-[#0E7A4E]"
-          }`}
-        >
-          Kids
-        </span>
-      </span>
-    </a>
+      </a>
+    </Link>
   );
 }
 
