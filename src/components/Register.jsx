@@ -27,18 +27,12 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import Footer from "./Footer";
 import Logo from "./SharedComponents";
-import {
-  display,
-  NAV,
-  EASE,
-  GLYPHS,
-  Button,
-  SectionHeading,
-} from "./SharedComponents";
+import { display, EASE, Button, SectionHeading } from "./SharedComponents";
 import RegisterCTA from "./RegisterCTA";
 import WhoItsFor from "./WhoItsFor";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import CoursesSection from "./CoursesSection";
 
 function useTypewriter(text, { speed = 45, delay = 400 } = {}) {
   const [out, setOut] = useState("");
@@ -813,88 +807,84 @@ const PROGRAMMES = [
   },
 ];
 
-function Explore() {
-  return (
-    <section id="explore" className="scroll-mt-16 bg-white py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <SectionHeading
-          title="What can your child explore?"
-          text="Your child doesn’t have to know what they want to specialise in yet. That’s part of the journey."
-        />
+// function Explore() {
+//   return (
+//     <section id="explore" className="scroll-mt-16 bg-white py-24 lg:py-32">
+//       <div className="mx-auto max-w-7xl px-5 lg:px-8">
+//         <SectionHeading
+//           title="What can your child explore?"
+//           text="Your child doesn’t have to know what they want to specialise in yet. That’s part of the journey."
+//         />
 
-        <motion.div
-          className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-12"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.09 } },
-          }}
-        >
-          {PROGRAMMES.map((p) => {
-            const tone = TONES[p.tone];
-            return (
-              <motion.article
-                key={p.title}
-                variants={{
-                  hidden: { opacity: 0, y: 28, scale: 0.97 },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { duration: 0.65, ease: EASE },
-                  },
-                }}
-                whileHover={{ y: -6 }}
-                className={`group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-[28px] p-7 ${tone.card} ${p.span}`}
-              >
-                <p.icon
-                  aria-hidden="true"
-                  className={`pointer-events-none absolute -bottom-8 -right-6 text-[11rem] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 ${tone.ghost}`}
-                />
+//         <motion.div
+//           className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-12"
+//           initial="hidden"
+//           whileInView="show"
+//           viewport={{ once: true, amount: 0.15 }}
+//           variants={{
+//             hidden: {},
+//             show: { transition: { staggerChildren: 0.09 } },
+//           }}
+//         >
+//           {PROGRAMMES.map((p) => {
+//             const tone = TONES[p.tone];
+//             return (
+//               <motion.article
+//                 key={p.title}
+//                 variants={{
+//                   hidden: { opacity: 0, y: 28, scale: 0.97 },
+//                   show: {
+//                     opacity: 1,
+//                     y: 0,
+//                     scale: 1,
+//                     transition: { duration: 0.65, ease: EASE },
+//                   },
+//                 }}
+//                 whileHover={{ y: -6 }}
+//                 className={`group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-[28px] p-7 ${tone.card} ${p.span}`}
+//               >
+//                 <p.icon
+//                   aria-hidden="true"
+//                   className={`pointer-events-none absolute -bottom-8 -right-6 text-[11rem] transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 ${tone.ghost}`}
+//                 />
 
-                <span
-                  className={`relative grid h-12 w-12 place-items-center rounded-2xl text-xl ${tone.chip}`}
-                >
-                  <p.icon />
-                </span>
+//                 <span
+//                   className={`relative grid h-12 w-12 place-items-center rounded-2xl text-xl ${tone.chip}`}
+//                 >
+//                   <p.icon />
+//                 </span>
 
-                <div className="relative mt-10">
-                  <h3
-                    className="text-2xl font-extrabold tracking-tight"
-                    style={display}
-                  >
-                    {p.title}
-                  </h3>
-                  <p
-                    className={`mt-2 max-w-sm text-base leading-relaxed ${tone.body}`}
-                  >
-                    {p.outcome}
-                  </p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <li
-                        key={t}
-                        className={`rounded-full px-3 py-1 text-xs font-bold ${tone.tag}`}
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.article>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Method: Learn → Build → Feedback → Improve → Showcase                      */
-/* -------------------------------------------------------------------------- */
+//                 <div className="relative mt-10">
+//                   <h3
+//                     className="text-2xl font-extrabold tracking-tight"
+//                     style={display}
+//                   >
+//                     {p.title}
+//                   </h3>
+//                   <p
+//                     className={`mt-2 max-w-sm text-base leading-relaxed ${tone.body}`}
+//                   >
+//                     {p.outcome}
+//                   </p>
+//                   <ul className="mt-5 flex flex-wrap gap-2">
+//                     {p.tags.map((t) => (
+//                       <li
+//                         key={t}
+//                         className={`rounded-full px-3 py-1 text-xs font-bold ${tone.tag}`}
+//                       >
+//                         {t}
+//                       </li>
+//                     ))}
+//                   </ul>
+//                 </div>
+//               </motion.article>
+//             );
+//           })}
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// }
 
 const METHOD = [
   {
@@ -1082,29 +1072,15 @@ function Method({ studentProjects }) {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Who it’s for                                                               */
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/*  Registration CTA + footer                                                  */
-/* -------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/*  Page                                                                       */
-/*                                                                             */
-/*  Props                                                                      */
-/*   registerHref     Link to your registration form page (default "/register")*/
-/*   whatsappHref     e.g. "https://wa.me/44XXXXXXXXXX"; hidden when empty     */
-/*   studentProjects  Real student work. Gallery is hidden until you add some: */
-/*                    [{ title: "Space Dodger", by: "Ada, 10", image: "/p1.jpg" }] */
-/* -------------------------------------------------------------------------- */
-
 export default function UppercoreKidsLanding({
   registerTo = "/register",
   whatsappHref = "",
   studentProjects = [],
 }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <MotionConfig reducedMotion="user">
       <style>{`
@@ -1124,7 +1100,8 @@ export default function UppercoreKidsLanding({
         <main>
           <Hero registerHref={registerTo} />
           <Pathway />
-          <Explore />
+          {/* <Explore /> */}
+          <CoursesSection />
           <Method studentProjects={studentProjects} />
           <WhoItsFor whatsappHref={whatsappHref} />
           <RegisterCTA registerHref={registerTo} whatsappHref={whatsappHref} />
